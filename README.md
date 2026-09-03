@@ -1,4 +1,5 @@
-# David Ifeanyi — Professional Portfolio
+# David Ifeanyi  
+Professional Portfolio
 
 A factual, CV-linked portfolio for David Ifeanyi, a Mechatronics Engineering student developing practical software and web development capabilities through hands-on projects.
 
