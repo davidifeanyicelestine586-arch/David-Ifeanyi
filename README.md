@@ -4,7 +4,7 @@ A factual, CV-linked portfolio for David Ifeanyi, a Mechatronics Engineering stu
 
 ## Purpose
 
-This repository is the presentation layer for David's documented technical work. Portfolio claims are intentionally conservative and are based on verified project documentation, GitHub evidence, and verified live projects.
+This repository is the presentation layer for documented technical work. Claims are kept conservative and are based on portfolio documentation, GitHub evidence and verified live projects.
 
 ## Stack
 
@@ -19,13 +19,14 @@ This repository is the presentation layer for David's documented technical work.
 app/
   layout.tsx
   page.tsx
-  projects/
-    tech-stack-architect/
-      page.tsx
+  projects/page.tsx
+  projects/tech-stack-architect/page.tsx
   globals.css
+data/
+  portfolio.ts
 ```
 
-Portfolio content is currently kept close to the page implementation for the first build. As the project grows, content should be moved into typed data modules so new projects can be added without changing UI components.
+Project/profile content is centralized in `data/portfolio.ts`. UI components should consume this data rather than duplicating project facts.
 
 ## Run locally
 
@@ -36,24 +37,24 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Validate a production build
+## Production check
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Update portfolio content
+## Updating content
 
-Before changing any factual claim, verify it against:
+Before changing a factual claim, verify it against:
 
 1. Notion portfolio/project documentation
-2. GitHub repository/source evidence
-3. Verified live destination
+2. The relevant GitHub repository/source
+3. The verified live destination, where applicable
 
-Keep project status conservative. Code presence alone does not prove production functionality. Never turn a target into an achievement.
+Keep status labels conservative. Code presence does not prove production functionality. Targets are not achievements. Never add secrets, tokens, credentials or sensitive repository artifacts.
 
-## Deploy
+## Deployment
 
 This is a standard Next.js application and can be deployed to a compatible Next.js hosting provider. No application secrets are required by the current portfolio implementation.
 
@@ -62,4 +63,4 @@ This is a standard Next.js application and can be deployed to a compatible Next.
 - No fabricated experience, metrics, clients, awards or credentials.
 - Planned work is never presented as completed.
 - Live status is only used after verification.
-- Sensitive repository artifacts are never reproduced in portfolio content.
+- The development journey is presented as evidence of progression, not as manufactured seniority.
