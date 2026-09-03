@@ -1,54 +1,4 @@
-const projects = [
-  {
-    name: "Tech Stack Architect",
-    status: "Flagship",
-    description: "A deterministic architecture workspace that analyzes project definitions, recommends compatible technologies, validates decisions, and generates implementation blueprints.",
-    stack: "Next.js · React · TypeScript · Tailwind · shadcn/ui · Supabase",
-    href: "/projects/tech-stack-architect",
-  },
-  {
-    name: "Sharp AI",
-    status: "MVP / in development",
-    description: "An AI content studio exploring generation of blog, social and email formats from a single idea, with a small backend proxy and local usage tracking.",
-    stack: "React · TypeScript · Express · OpenAI",
-    href: "https://github.com/davidifeanyicelestine586-arch/sharp-ai",
-  },
-  {
-    name: "StoryPix",
-    status: "Needs current-source review",
-    description: "An AI creative application repository whose current source needs to be evaluated beyond its inherited AI Studio README before stronger claims are made.",
-    stack: "React · Vite · Express · Gemini",
-    href: "https://github.com/davidifeanyicelestine586-arch/StoryPix",
-  },
-  {
-    name: "Ediccrew.com",
-    status: "Active web project",
-    description: "A technology-focused WordPress publication and web project covering technology, people, trends, tools and practical build-oriented topics.",
-    stack: "WordPress · Elementor · SEO · Web tooling",
-    href: "https://ediccrew.com",
-  },
-  {
-    name: "ToolStack Backend",
-    status: "Prototype",
-    description: "A small FastAPI experiment that loads a tool registry and returns recommendations using simple tag-in-query matching.",
-    stack: "Python · FastAPI",
-    href: "https://github.com/davidifeanyicelestine586-arch/toolstack-backend",
-  },
-  {
-    name: "VizualMecha Studio",
-    status: "Early stage",
-    description: "An early-stage project exploring a virtual mechatronics lab and 3D visualization direction. The larger concept is kept separate from the limited repository implementation.",
-    stack: "Mechatronics · 3D visualization concepts",
-    href: "https://github.com/davidifeanyicelestine586-arch/VizualMecha-Studio-",
-  },
-  {
-    name: "My First Line of Code",
-    status: "Early milestone",
-    description: "A simple first web programming project preserved as part of the progression from beginner programming work toward larger systems.",
-    stack: "HTML · CSS · JavaScript",
-    href: "https://github.com/davidifeanyicelestine586-arch/my-first-line-of-code",
-  },
-];
+import { projects } from "../../data/portfolio";
 
 export default function ProjectsPage() {
   return (
@@ -64,8 +14,12 @@ export default function ProjectsPage() {
               <div className="project-meta"><span>{project.status}</span></div>
               <h2>{project.name}</h2>
               <p>{project.description}</p>
-              <p className="mono">{project.stack}</p>
-              <a className="text-link" href={project.href} target={project.href.startsWith("http") ? "_blank" : undefined} rel={project.href.startsWith("http") ? "noreferrer" : undefined}>Inspect project →</a>
+              <p className="mono">{project.stack.join(" · ")}</p>
+              <div className="actions">
+                <a className="text-link" href={project.repository} target="_blank" rel="noreferrer">Repository ↗</a>
+                {project.live && <a className="text-link" href={project.live} target="_blank" rel="noreferrer">Live project ↗</a>}
+                {project.caseStudy && <a className="text-link" href={project.caseStudy}>Case study →</a>}
+              </div>
             </article>
           ))}
         </div>
