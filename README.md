@@ -17,10 +17,15 @@ This repository is the presentation layer for David's documented technical work.
 
 ```text
 app/
-  layout.tsx       # global metadata and document shell
-  page.tsx         # portfolio content and page sections
-  globals.css      # visual system and responsive styles
+  layout.tsx
+  page.tsx
+  projects/
+    tech-stack-architect/
+      page.tsx
+  globals.css
 ```
+
+Portfolio content is currently kept close to the page implementation for the first build. As the project grows, content should be moved into typed data modules so new projects can be added without changing UI components.
 
 ## Run locally
 
@@ -31,25 +36,26 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Validate a production build
+
+```bash
+npm run build
+npm run start
+```
+
 ## Update portfolio content
 
-Project, skill and journey content currently lives in `app/page.tsx`. Before changing a factual claim, verify it against:
+Before changing any factual claim, verify it against:
 
 1. Notion portfolio/project documentation
 2. GitHub repository/source evidence
 3. Verified live destination
 
-Keep project status conservative. Code presence alone does not prove production functionality.
+Keep project status conservative. Code presence alone does not prove production functionality. Never turn a target into an achievement.
 
 ## Deploy
 
-This is a standard Next.js application and can be deployed to a compatible Next.js hosting provider. The production build command is:
-
-```bash
-npm run build
-```
-
-No application secrets are required by the current portfolio implementation.
+This is a standard Next.js application and can be deployed to a compatible Next.js hosting provider. No application secrets are required by the current portfolio implementation.
 
 ## Content principles
 
