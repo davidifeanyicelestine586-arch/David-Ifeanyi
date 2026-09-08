@@ -1,7 +1,21 @@
-# David Ifeanyi  
+# David Ifeanyi
 Professional Portfolio
 
 A factual, CV-linked portfolio for David Ifeanyi, a Mechatronics Engineering student developing practical software and web development capabilities through hands-on projects.
+
+## Recruiter quick view
+
+**Focus:** Software / Web Development · Mechatronics Engineering · Technical Systems
+
+**Strongest evidence:**
+- **Tech Stack Architect** — live/published Next.js project focused on structured technology-stack definition, validation, and blueprint export.
+- **Professional Portfolio** — responsive Next.js/React application with TypeScript, Tailwind CSS, accessible navigation, project case studies, metadata, and CI build verification.
+- **Sharp AI** — SaaS-style React/Next.js project with dashboard UI, responsive interface work, interactions, deployment, and debugging.
+- **Ediccrew** — active WordPress technology project involving site development, technical cleanup, SEO, content systems, reliability, tools, and monetization experiments.
+
+**Core technologies:** Next.js · React · TypeScript · JavaScript · Python · Tailwind CSS · APIs & Automation · Supabase / Databases · Git & GitHub · WordPress · Deployment · Responsive UI · Accessibility · Debugging · SEO
+
+**Portfolio:** https://david-ifeanyi-pi.vercel.app/
 
 ## Purpose
 
