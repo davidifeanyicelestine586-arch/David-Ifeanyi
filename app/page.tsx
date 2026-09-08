@@ -64,7 +64,10 @@ export default function Home() {
         <section id="about">
           <div className="container">
             <div className="section-head">
-              <h2>About</h2>
+              <div>
+                <div className="eyebrow">01 · Identity</div>
+                <h2>About</h2>
+              </div>
               <p className="section-copy">
                 My engineering education gives me a systems-oriented foundation. Alongside it, I have
                 been learning software and web development by building, debugging, documenting and
@@ -79,12 +82,12 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Evidence</div>
+                <div className="eyebrow">02 · Evidence</div>
                 <h2>Selected work</h2>
               </div>
               <p className="section-copy">
-                A focused view of projects that show how I learn and build. Status labels are deliberately
-                conservative, and the strongest work includes a deeper case study.
+                A focused view of projects that show how I learn and build. Start with the project,
+                then follow the strongest available evidence.
               </p>
             </div>
 
@@ -92,7 +95,10 @@ export default function Home() {
               {projects.map((p) => (
                 <article className={`card ${p.caseStudy ? "featured" : ""}`} key={p.name}>
                   <div className="card-top">
-                    <h3>{p.name}</h3>
+                    <div>
+                      <h3>{p.name}</h3>
+                      <span className="project-type">Project</span>
+                    </div>
                     <span className="status">{p.status}</span>
                   </div>
                   <p>{p.description}</p>
@@ -103,7 +109,7 @@ export default function Home() {
                   </div>
                   <div className="actions project-actions">
                     {p.caseStudy && <a className="link link-primary" href={p.caseStudy}>Explore project →</a>}
-                    {p.live && <a className="link" href={p.live} target="_blank" rel="noreferrer">Live project ↗</a>}
+                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer">Live project ↗</a>}
                     {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer">Repository ↗</a>}
                   </div>
                 </article>
@@ -116,8 +122,8 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Featured system</div>
-                <h2>Tech Stack Architect</h2>
+                <div className="eyebrow">03 · Proof anchor</div>
+                <h2>Featured system</h2>
               </div>
               <p className="section-copy">
                 The clearest example of my move from building individual interfaces toward thinking about
@@ -125,14 +131,26 @@ export default function Home() {
               </p>
             </div>
             <div className="card featured feature-system">
-              <div className="eyebrow">Define → Analyze → Recommend → Validate → Blueprint</div>
-              <h3 className="feature-title">A deterministic architecture workflow</h3>
-              <p>
-                The project uses structured registries and rules to reason about technologies, dependencies
-                and conflicts. Its documented persistence work adds a separate data path through an API,
-                persistence service, repository layer and Supabase. The portfolio deliberately keeps those
-                concerns distinct rather than presenting persistence as automatically available in every deployment.
-              </p>
+              <div className="feature-system-grid">
+                <div>
+                  <div className="eyebrow">Tech Stack Architect</div>
+                  <h3 className="feature-title">A deterministic architecture workflow</h3>
+                  <p>
+                    A structured workspace for defining a project, analyzing requirements, recommending
+                    compatible technologies, validating decisions and generating an implementation blueprint.
+                  </p>
+                </div>
+                <div>
+                  <div className="workflow" aria-label="Tech Stack Architect workflow">
+                    <span>Define</span><span>→</span><span>Analyze</span><span>→</span><span>Recommend</span>
+                    <span>→</span><span>Validate</span><span>→</span><span>Blueprint</span>
+                  </div>
+                  <p className="feature-proof">
+                    Its documented persistence work separates API, persistence service, repository and
+                    Supabase concerns rather than assuming persistence is available everywhere.
+                  </p>
+                </div>
+              </div>
               <div className="tags">
                 <span className="tag">Deterministic reasoning</span>
                 <span className="tag">Dependency handling</span>
@@ -148,7 +166,7 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Working toolkit</div>
+                <div className="eyebrow">Toolkit</div>
                 <h2>Technical areas</h2>
               </div>
               <p className="section-copy">
@@ -171,12 +189,11 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Trajectory</div>
+                <div className="eyebrow">04 · Trajectory</div>
                 <h2>Development journey</h2>
               </div>
               <p className="section-copy">
-                The portfolio is not meant to hide the learning curve. The progression from first code to
-                larger systems is part of the evidence.
+                The progression from first code to larger systems is part of the evidence, not something to hide.
               </p>
             </div>
             <div className="journey">
