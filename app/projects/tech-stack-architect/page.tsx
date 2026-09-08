@@ -27,9 +27,10 @@ export default function TechStackArchitectCaseStudy() {
           <section>
             <h2>What it solves</h2>
             <p>
-              Tech Stack Architect is a client-side Next.js workspace for assembling,
-              validating and exporting technology-stack blueprints. It makes architecture
-              decisions explicit instead of hiding them behind an opaque recommendation step.
+              Tech Stack Architect is a Next.js workspace for defining a project, analyzing its
+              requirements, recommending compatible technologies, validating decisions and exporting
+              technology-stack blueprints. It makes architecture decisions explicit instead of hiding
+              them behind an opaque recommendation step.
             </p>
           </section>
 
@@ -62,11 +63,22 @@ export default function TechStackArchitectCaseStudy() {
           </section>
 
           <section>
+            <h2>Persistence architecture</h2>
+            <p>
+              Project persistence is separated from the browser UI through a server-side API,
+              persistence service and repository boundary backed by Supabase. Saved projects can be
+              created, listed, opened, updated and deleted, with revision checks protecting against
+              stale updates. The browser does not connect directly to Supabase.
+            </p>
+          </section>
+
+          <section>
             <h2>Current scope</h2>
             <p>
-              The current product is intentionally client-side and in-memory. Authentication, database
-              persistence, backend services, external APIs, AI/LLM integrations and cloud integrations
-              are outside the current implementation and are not represented as completed features here.
+              The current application includes deterministic registry-based recommendations and
+              server-mediated project persistence. Authentication and accounts, teams, collaboration,
+              billing, realtime collaboration and AI/LLM-powered recommendations are outside the
+              current implementation.
             </p>
           </section>
 
