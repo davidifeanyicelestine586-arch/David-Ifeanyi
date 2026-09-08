@@ -15,17 +15,19 @@ export default function ProjectsPage() {
         <a className="back" href="/">← Home</a>
 
         <header>
-          <div className="eyebrow">Selected work · Portfolio</div>
+          <div className="eyebrow">Evidence · Portfolio</div>
           <h1>Projects</h1>
           <p className="page-lede">
-            A documented progression from early web work to increasingly structured
-            software and engineering projects.
+            A documented progression from early web work to increasingly structured software
+            and engineering projects. Each entry leads with what it is, then points to the
+            strongest available evidence.
           </p>
         </header>
 
         <div className="project-list">
           {projects.map((project, index) => {
             const featured = index === 0;
+            const primaryHref = project.caseStudy || project.live || project.repository;
 
             return (
               <article
@@ -44,44 +46,50 @@ export default function ProjectsPage() {
                   </div>
 
                   <div>
-                    <div className="tags">
+                    <div className="tags" aria-label={`${project.name} technologies`}>
                       {project.stack.map((tag) => (
                         <span className="tag" key={tag}>{tag}</span>
                       ))}
                     </div>
 
-                    <div className="actions">
-                      {project.caseStudy && (
-                        <RadialRevealButton
-                          label="Read case study →"
-                          link={project.caseStudy}
-                          newTab={false}
-                          rounded={100}
-                          padding="13px 20px"
-                          font={buttonFont}
-                          colors={{
-                            fill: "#d8ff64",
-                            textColor: "#10130b",
-                            hoverFill: "#008E8E",
-                            hoverTextColor: "#ffffff",
-                          }}
-                          border={{
-                            borderWidth: 1,
-                            borderStyle: "solid",
-                            borderColor: "#d8ff64",
-                          }}
-                        />
+                    <div className="actions project-page-actions">
+                      {primaryHref && (
+                        project.caseStudy ? (
+                          <RadialRevealButton
+                            label="Explore project →"
+                            link={primaryHref}
+                            newTab={false}
+                            rounded={100}
+                            padding="13px 20px"
+                            font={buttonFont}
+                            colors={{
+                              fill: "#d8ff64",
+                              textColor: "#10130b",
+                              hoverFill: "#008E8E",
+                              hoverTextColor: "#ffffff",
+                            }}
+                            border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#d8ff64" }}
+                          />
+                        ) : project.live ? (
+                          <a className="button button-project-primary" href={primaryHref} target="_blank" rel="noreferrer">
+                            View live project ↗
+                          </a>
+                        ) : (
+                          <a className="button button-project-primary" href={primaryHref} target="_blank" rel="noreferrer">
+                            Explore repository ↗
+                          </a>
+                        )
                       )}
 
-                      {project.repository && (
-                        <a className="text-link" href={project.repository} target="_blank" rel="noreferrer">
-                          Repository ↗
+                      {project.live && project.live !== primaryHref && (
+                        <a className="text-link" href={project.live} target="_blank" rel="noreferrer">
+                          Live project ↗
                         </a>
                       )}
 
-                      {project.live && (
-                        <a className="text-link" href={project.live} target="_blank" rel="noreferrer">
-                          Live project ↗
+                      {project.repository && project.repository !== primaryHref && (
+                        <a className="text-link" href={project.repository} target="_blank" rel="noreferrer">
+                          Repository ↗
                         </a>
                       )}
                     </div>
