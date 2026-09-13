@@ -19,11 +19,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
       - name: Verify Node and npm
         run: node --version && npm --version
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: TypeScript typecheck
         run: npm run typecheck
       - name: Production build
