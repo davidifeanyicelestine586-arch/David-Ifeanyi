@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { projects } from "../../data/portfolio";
 
 export default function ProjectsPage() {
   return (
     <main className="page-shell">
       <div className="container">
-        <a className="back" href="/">← Home</a>
+        <Link className="back" href="/">← Home</Link>
 
         <header>
           <div className="eyebrow">Evidence · Portfolio</div>
@@ -46,14 +47,20 @@ export default function ProjectsPage() {
 
                     <div className="actions project-page-actions">
                       {primaryHref && (
-                        <a
-                          className="button button-project-primary"
-                          href={primaryHref}
-                          target={project.caseStudy ? undefined : "_blank"}
-                          rel={project.caseStudy ? undefined : "noreferrer"}
-                        >
-                          {project.caseStudy ? "Explore project →" : project.live ? "View live project ↗" : "Explore repository ↗"}
-                        </a>
+                        project.caseStudy ? (
+                          <Link className="button button-project-primary" href={primaryHref}>
+                            Explore project →
+                          </Link>
+                        ) : (
+                          <a
+                            className="button button-project-primary"
+                            href={primaryHref}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {project.live ? "View live project ↗" : "Explore repository ↗"}
+                          </a>
+                        )
                       )}
 
                       {project.live && project.live !== primaryHref && (
