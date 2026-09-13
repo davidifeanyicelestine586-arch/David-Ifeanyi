@@ -1,7 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import * as React from "react";
-import Globe from "./Globe";
+
+const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
 type Props = {
   style?: React.CSSProperties;
@@ -16,29 +18,55 @@ export default function AccessibleGlobe({
   spin = 8,
   hoverOn = true,
 }: Props) {
-  const [reducedMotion, setReducedMotion] = React.useState(false);
+  const [motionPreference, setMotionPreference] = React.useState<"reduced" | "full" | null>(null);
+  const [isNarrow, setIsNarrow] = React.useState(false);
 
   React.useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(media.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const narrow = window.matchMedia("(max-width: 800px)");
+    const update = () => {
+      setMotionPreference(motion.matches ? "reduced" : "full");
+      setIsNarrow(narrow.matches);
+    };
     update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
+    motion.addEventListener("change", update);
+    narrow.addEventListener("change", update);
+    return () => {
+      motion.removeEventListener("change", update);
+      narrow.removeEventListener("change", update);
+    };
   }, []);
 
-  if (reducedMotion) {
+  if (motionPreference === null) {
+    return <div aria-hidden="true" style={style} />;
+  }
+
+  if (motionPreference === "reduced") {
     return (
-      <Globe
-        style={style}
-        density={density}
-        spin={0}
-        hoverOn={false}
-        dots={{ size: 8, wobble: 0, flicker: 0 }}
-        shimmer={{ color: "#D8CCFF", speed: 0, style: "sweep", angle: 90, width: 7 }}
-        waves={{ color: "#6FA8FF", color2: "#FF5E8F", size: 9, glow: 11, speed: 0 }}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          minWidth: 120,
+          minHeight: 120,
+          overflow: "hidden",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(216,255,100,.08), transparent 52%), radial-gradient(circle at 50% 50%, transparent 58%, rgba(216,255,100,.18) 59%, transparent 61%)",
+          ...style,
+        }}
       />
     );
   }
 
-  return <Globe style={style} density={density} spin={spin} hoverOn={hoverOn} />;
+  return (
+    <Globe
+      style={style}
+      density={isNarrow ? Math.min(density, 7) : density}
+      spin={isNarrow ? Math.min(spin, 5) : spin}
+      hoverOn={isNarrow ? false : hoverOn}
+    />
+  );
 }
