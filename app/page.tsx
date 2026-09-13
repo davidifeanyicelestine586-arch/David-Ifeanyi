@@ -18,8 +18,8 @@ export default function Home() {
         </div>
       </nav>
 
-      <main id="top">
-        <header className="hero">
+      <main id="main-content" tabIndex={-1}>
+        <header className="hero" id="top">
           <div className="container hero-grid">
             <div className="hero-copy">
               <div className="eyebrow">Mechatronics Engineering × Software Development</div>
