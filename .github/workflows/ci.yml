@@ -23,6 +23,8 @@ jobs:
         run: node --version && npm --version
       - name: Install dependencies
         run: npm install
+      - name: Dependency vulnerability audit
+        run: npm audit --audit-level=high
       - name: TypeScript typecheck
         run: npm run typecheck
       - name: Production build
