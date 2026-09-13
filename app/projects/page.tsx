@@ -1,12 +1,4 @@
 import { projects } from "../../data/portfolio";
-import RadialRevealButton from "../../components/originkit/RadialRevealButton";
-
-const buttonFont = {
-  fontFamily: "Manrope, system-ui, sans-serif",
-  fontWeight: 700,
-  fontSize: 14,
-  lineHeight: 1.2,
-};
 
 export default function ProjectsPage() {
   return (
@@ -54,31 +46,14 @@ export default function ProjectsPage() {
 
                     <div className="actions project-page-actions">
                       {primaryHref && (
-                        project.caseStudy ? (
-                          <RadialRevealButton
-                            label="Explore project →"
-                            link={primaryHref}
-                            newTab={false}
-                            rounded={100}
-                            padding="13px 20px"
-                            font={buttonFont}
-                            colors={{
-                              fill: "#d8ff64",
-                              textColor: "#10130b",
-                              hoverFill: "#008E8E",
-                              hoverTextColor: "#ffffff",
-                            }}
-                            border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#d8ff64" }}
-                          />
-                        ) : project.live ? (
-                          <a className="button button-project-primary" href={primaryHref} target="_blank" rel="noreferrer">
-                            View live project ↗
-                          </a>
-                        ) : (
-                          <a className="button button-project-primary" href={primaryHref} target="_blank" rel="noreferrer">
-                            Explore repository ↗
-                          </a>
-                        )
+                        <a
+                          className="button button-project-primary"
+                          href={primaryHref}
+                          target={project.caseStudy ? undefined : "_blank"}
+                          rel={project.caseStudy ? undefined : "noreferrer"}
+                        >
+                          {project.caseStudy ? "Explore project →" : project.live ? "View live project ↗" : "Explore repository ↗"}
+                        </a>
                       )}
 
                       {project.live && project.live !== primaryHref && (
