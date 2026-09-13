@@ -1,13 +1,6 @@
 import { projects } from "../../../data/portfolio";
-import RadialRevealButton from "../../../components/originkit/RadialRevealButton";
 
 const project = projects.find((item) => item.name === "Tech Stack Architect");
-
-const buttonFont = {
-  fontFamily: "Manrope, system-ui, sans-serif",
-  fontWeight: 700,
-  fontSize: 14,
-};
 
 export default function TechStackArchitectCaseStudy() {
   if (!project) return null;
@@ -86,26 +79,14 @@ export default function TechStackArchitectCaseStudy() {
             <h2>Inspect the evidence</h2>
             <div className="actions case-actions">
               {project.live && (
-                <RadialRevealButton
-                  label="Open live project ↗"
-                  link={project.live}
-                  padding="13px 18px"
-                  rounded={100}
-                  font={buttonFont}
-                  colors={{ fill: "#d8ff64", hoverFill: "#008E8E", textColor: "#10130b", hoverTextColor: "#ffffff" }}
-                  border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#d8ff64" }}
-                />
+                <a className="button" href={project.live} target="_blank" rel="noreferrer">
+                  Open live project ↗
+                </a>
               )}
               {project.repository && (
-                <RadialRevealButton
-                  label="Inspect GitHub repository ↗"
-                  link={project.repository}
-                  padding="13px 18px"
-                  rounded={100}
-                  font={buttonFont}
-                  colors={{ fill: "#101318", hoverFill: "#008E8E", textColor: "#f2f4f7", hoverTextColor: "#ffffff" }}
-                  border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#242a32" }}
-                />
+                <a className="button" href={project.repository} target="_blank" rel="noreferrer">
+                  Inspect GitHub repository ↗
+                </a>
               )}
             </div>
           </section>
