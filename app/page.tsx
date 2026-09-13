@@ -1,5 +1,5 @@
 import { profile, projects, skills } from "../data/portfolio";
-import Globe from "../components/originkit/Globe";
+import AccessibleGlobe from "../components/originkit/AccessibleGlobe";
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-visual" aria-hidden="true">
-              <Globe
+              <AccessibleGlobe
                 style={{ width: "100%", height: "100%" }}
                 density={10}
                 spin={8}
