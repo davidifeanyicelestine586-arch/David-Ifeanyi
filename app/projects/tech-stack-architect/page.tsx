@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { projects } from "../../../data/portfolio";
 
 const project = projects.find((item) => item.name === "Tech Stack Architect");
@@ -8,7 +9,7 @@ export default function TechStackArchitectCaseStudy() {
   return (
     <main className="case-study">
       <div className="container">
-        <a className="back" href="/">← Back to portfolio</a>
+        <Link className="back" href="/">← Back to portfolio</Link>
         <div className="eyebrow">Featured case study · {project.status}</div>
         <h1>{project.name}</h1>
         <p className="case-lede">{project.description}</p>
