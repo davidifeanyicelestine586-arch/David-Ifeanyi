@@ -390,7 +390,7 @@ class GlobeScene {
 }
 
 type Props = Config & { style?: React.CSSProperties }
-function __OriginkitBase_Globe(props: Props) {
+function OriginkitBaseGlobe(props: Props) {
     const { dot = DEFAULTS.dot, net = DEFAULTS.net, density = DEFAULTS.density, spin = DEFAULTS.spin, spinDir = DEFAULTS.spinDir, hoverOn = DEFAULTS.hoverOn, sizePercent = DEFAULTS.sizePercent, dots = DEFAULTS.dots, cage = DEFAULTS.cage, shimmer = DEFAULTS.shimmer, waves = DEFAULTS.waves, hover = DEFAULTS.hover, style } = props
     const containerRef = useRef<HTMLDivElement | null>(null); const sceneRef = useRef<GlobeScene | null>(null); const cfgRef = useRef<Config>(null as any)
     cfgRef.current = { dot, net, density, spin, spinDir, hoverOn, sizePercent, dots, cage, shimmer, waves, hover }
@@ -399,7 +399,7 @@ function __OriginkitBase_Globe(props: Props) {
     return <div ref={containerRef} role="img" aria-label="Globe of points inside a shimmering wireframe cage" style={{ position: "relative", width: "100%", height: "100%", minWidth: 120, minHeight: 120, overflow: "hidden", ...style }} />
 }
 
-function Globe(props: Props) { return <__OriginkitBase_Globe {...props} /> }
+function Globe(props: Props) { return <OriginkitBaseGlobe {...props} /> }
 Globe.displayName = "Globe"
 Globe.defaultProps = { ...DEFAULTS }
 
