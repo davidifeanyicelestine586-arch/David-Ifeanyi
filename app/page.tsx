@@ -39,9 +39,9 @@ export default function Home() {
             <div className="hero-visual" aria-hidden="true">
               <AccessibleGlobe
                 style={{ width: "100%", height: "100%" }}
-                density={10}
-                spin={8}
-                hoverOn={true}
+                density={7}
+                spin={4}
+                hoverOn={false}
               />
             </div>
           </div>
