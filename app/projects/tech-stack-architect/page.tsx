@@ -10,7 +10,7 @@ export default function TechStackArchitectCaseStudy() {
     <main className="case-study">
       <div className="container">
         <Link className="back" href="/">← Back to portfolio</Link>
-        <div className="eyebrow">Featured case study · {project.status}</div>
+        <div className="eyebrow">Featured case study</div>
         <h1>{project.name}</h1>
         <p className="case-lede">{project.description}</p>
         <div className="tags" aria-label="Tech Stack Architect technologies">
