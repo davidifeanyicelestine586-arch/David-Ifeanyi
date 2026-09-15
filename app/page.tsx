@@ -110,12 +110,12 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">03 · How I think</div>
+                <div className="eyebrow">03 · Systems thinking</div>
                 <h2>From project to system</h2>
               </div>
               <p className="section-copy">
-                One project can show more than a finished interface. The case study below is the deeper
-                evidence trail for how I approach requirements, architecture and validation.
+                One project can show more than a finished interface. The case study below follows the
+                decisions behind the work: requirements, architecture and validation.
               </p>
             </div>
             <div className="card feature-system">
@@ -179,7 +179,8 @@ export default function Home() {
                 <h2>Development journey</h2>
               </div>
               <p className="section-copy">
-                The progression from first code to larger systems is part of the evidence, not something to hide.
+                The progression from first code to larger systems is part of the record, including the work
+                that is still early or unfinished.
               </p>
             </div>
             <div className="journey">
@@ -193,7 +194,7 @@ export default function Home() {
               </div>
               <div className="journey-item">
                 <div className="year">CURRENT</div>
-                <div><h3>Systems thinking</h3><p>Current work increasingly explores deterministic tooling, persistence boundaries, AI-assisted development and the connection between engineering and software.</p></div>
+                <div><h3>Systems thinking</h3><p>Current work explores deterministic tooling, persistence boundaries, AI-assisted development and the connection between engineering and software.</p></div>
               </div>
             </div>
           </div>
