@@ -157,24 +157,32 @@ footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted)
   .feature-system-grid { grid-template-columns: 1fr; gap: 22px; }
   .contact-actions { justify-content: flex-start; }
   .page-shell { padding: 44px 0 80px; }
+  .page-shell header { margin-bottom: 40px; }
+  .project-card,.project-card-featured { padding: 24px; }
+  .project-meta { align-items: flex-start; flex-direction: column; gap: 6px; margin-bottom: 22px; }
   .project-card-content { grid-template-columns: 1fr; gap: 26px; }
-  .project-card { padding: 24px; }
-  .project-card-featured { padding: 28px; }
-  .case-grid { grid-template-columns: 1fr; }
-  .case-grid > section { padding: 24px; }
+  .project-card .actions { justify-content: flex-start; }
   .case-study { padding: 44px 0 80px; }
+  .case-study > .container > .tags { margin-bottom: 40px; }
+  .footer-inner { flex-direction: column; gap: 6px; }
 }
 @media (max-width:520px) {
-  .skill-grid { grid-template-columns: 1fr; }
-  .journey-item { grid-template-columns: 1fr; gap: 8px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-  .card { padding: 22px; }
-  .card.featured { padding: 24px; }
-  .card-top { flex-direction: column; gap: 12px; }
-  .status { align-self: flex-start; }
-  .actions { gap: 8px; }
+  .container { width: min(100% - 24px,1120px); }
+  .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0 8px; }
+  .nav-links { width: calc(100vw - 24px); }
+  .hero { padding-top: 36px; }
+  .hero-visual { height: 270px; min-height: 220px; }
+  h1 { font-size: clamp(40px,12vw,58px); letter-spacing: -.06em; }
+  .actions { width: 100%; }
+  .button,.hero-tertiary,.link,.text-link { min-height: 46px; }
   .button { width: 100%; justify-content: center; }
-  .hero-tertiary { padding-left: 0; }
+  .hero-tertiary { justify-content: center; width: 100%; }
+  .card { padding: 22px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .journey-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+  .contact-actions { width: 100%; }
+  .contact-actions .button,.contact-actions .text-link { width: 100%; justify-content: center; }
+  .project-card,.project-card-featured { padding: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
