@@ -392,10 +392,29 @@ class GlobeScene {
 type Props = Config & { style?: React.CSSProperties }
 function OriginkitBaseGlobe(props: Props) {
     const { dot = DEFAULTS.dot, net = DEFAULTS.net, density = DEFAULTS.density, spin = DEFAULTS.spin, spinDir = DEFAULTS.spinDir, hoverOn = DEFAULTS.hoverOn, sizePercent = DEFAULTS.sizePercent, dots = DEFAULTS.dots, cage = DEFAULTS.cage, shimmer = DEFAULTS.shimmer, waves = DEFAULTS.waves, hover = DEFAULTS.hover, style } = props
-    const containerRef = useRef<HTMLDivElement | null>(null); const sceneRef = useRef<GlobeScene | null>(null); const cfgRef = useRef<Config>(null as any)
-    cfgRef.current = { dot, net, density, spin, spinDir, hoverOn, sizePercent, dots, cage, shimmer, waves, hover }
-    useEffect(() => { const container = containerRef.current; if (!container) return; let scene: GlobeScene; try { scene = new GlobeScene(container, cfgRef.current) } catch { return }; sceneRef.current = scene; scene.setSize(container.clientWidth, container.clientHeight); scene.start(); const ro = new ResizeObserver(() => scene.setSize(container.clientWidth, container.clientHeight)); ro.observe(container); return () => { ro.disconnect(); scene.dispose(); sceneRef.current = null } }, [])
-    useEffect(() => { sceneRef.current?.updateConfig(cfgRef.current) }, [dot, net, density, spin, spinDir, hoverOn, sizePercent, dots?.size, dots?.wobble, dots?.flicker, cage?.detail, cage?.spread, cage?.glow, shimmer?.color, shimmer?.speed, shimmer?.style, shimmer?.angle, shimmer?.width, waves?.color, waves?.color2, waves?.size, waves?.glow, waves?.speed, hover?.fill, hover?.glow, hover?.reach])
+    const containerRef = useRef<HTMLDivElement | null>(null)
+    const sceneRef = useRef<GlobeScene | null>(null)
+    const initialConfig: Config = { dot, net, density, spin, spinDir, hoverOn, sizePercent, dots, cage, shimmer, waves, hover }
+    const cfgRef = useRef<Config>(initialConfig)
+
+    useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+        let scene: GlobeScene
+        try { scene = new GlobeScene(container, cfgRef.current) } catch { return }
+        sceneRef.current = scene
+        scene.setSize(container.clientWidth, container.clientHeight)
+        scene.start()
+        const ro = new ResizeObserver(() => scene.setSize(container.clientWidth, container.clientHeight))
+        ro.observe(container)
+        return () => { ro.disconnect(); scene.dispose(); sceneRef.current = null }
+    }, [])
+
+    useEffect(() => {
+        cfgRef.current = { dot, net, density, spin, spinDir, hoverOn, sizePercent, dots, cage, shimmer, waves, hover }
+        sceneRef.current?.updateConfig(cfgRef.current)
+    }, [dot, net, density, spin, spinDir, hoverOn, sizePercent, dots?.size, dots?.wobble, dots?.flicker, cage?.detail, cage?.spread, cage?.glow, shimmer?.color, shimmer?.speed, shimmer?.style, shimmer?.angle, shimmer?.width, waves?.color, waves?.color2, waves?.size, waves?.glow, waves?.speed, hover?.fill, hover?.glow, hover?.reach])
+
     return <div ref={containerRef} role="img" aria-label="Globe of points inside a shimmering wireframe cage" style={{ position: "relative", width: "100%", height: "100%", minWidth: 120, minHeight: 120, overflow: "hidden", ...style }} />
 }
 
