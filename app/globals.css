@@ -164,6 +164,8 @@ footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted)
   .project-card .actions { justify-content: flex-start; }
   .case-study { padding: 44px 0 80px; }
   .case-study > .container > .tags { margin-bottom: 40px; }
+  .case-grid { grid-template-columns: 1fr; }
+  .case-grid > section { padding: 24px; }
   .footer-inner { flex-direction: column; gap: 6px; }
 }
 @media (max-width:520px) {
