@@ -4,14 +4,10 @@
   --type-display-tracking: -0.07em;
   --type-heading-leading: 1.05;
   --type-heading-tracking: -0.05em;
-  --type-body-size: 16px;
   --type-body-leading: 1.6;
-  --type-lede-size: clamp(18px, 2vw, 23px);
   --type-label-size: 11px;
   --type-label-leading: 1.4;
   --type-label-tracking: 0.08em;
-  --type-technical-size: 11px;
-  --type-technical-leading: 1.5;
 }
 
 /* Narrative type: human-facing content stays in the primary family. */
@@ -49,19 +45,6 @@ h2 {
 
 .hero .eyebrow {
   color: var(--accent);
-}
-
-/* Monospace remains reserved for information that benefits from a technical reading cue. */
-.project-type,
-.status,
-.tag,
-.workflow,
-.skill-index,
-.year,
-.project-meta,
-.mono {
-  font-size: var(--type-technical-size);
-  line-height: var(--type-technical-leading);
 }
 
 @media (max-width: 800px) {
