@@ -31,7 +31,7 @@ export default function Home() {
               <div className="actions hero-actions">
                 <a className="button primary" href="#work">View selected work</a>
                 <a className="button" href="#contact">Contact me</a>
-                <a className="hero-tertiary" href={profile.github} target="_blank" rel="noreferrer">
+                <a className="hero-tertiary" href={profile.github} target="_blank" rel="noreferrer" aria-label="Open David Ifeanyi's GitHub profile in a new tab">
                   GitHub ↗
                 </a>
               </div>
@@ -85,18 +85,18 @@ export default function Home() {
                       <h3>{p.name}</h3>
                       <span className="project-type">Project</span>
                     </div>
-                    <span className="status">{p.status}</span>
+                    <span className="status" aria-label={`${p.name} project state: ${p.status}`}>{p.status}</span>
                   </div>
                   <p>{p.description}</p>
-                  <div className="tags">
+                  <div className="tags" aria-label={`${p.name} technologies`}>
                     {p.stack.map((tag) => (
                       <span className="tag" key={tag}>{tag}</span>
                     ))}
                   </div>
                   <div className="actions project-actions">
-                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy}>Explore project →</a>}
-                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer">Live project ↗</a>}
-                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer">Repository ↗</a>}
+                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy} aria-label={`Explore the ${p.name} project case study`}>Explore project →</a>}
+                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open the live ${p.name} project in a new tab`}>Live project ↗</a>}
+                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open the ${p.name} repository in a new tab`}>Repository ↗</a>}
                   </div>
                 </article>
               ))}
@@ -112,8 +112,8 @@ export default function Home() {
                 <h2>From project to system</h2>
               </div>
               <p className="section-copy">
-                One project can show more than a finished interface. The case study below is the deeper
-                evidence trail for how I approach requirements, architecture and validation.
+                One project can show more than a finished interface. The case study below follows the
+                decisions behind the work: requirements, architecture and validation.
               </p>
             </div>
             <div className="card feature-system">
@@ -177,7 +177,8 @@ export default function Home() {
                 <h2>Development journey</h2>
               </div>
               <p className="section-copy">
-                The progression from first code to larger systems is part of the evidence, not something to hide.
+                The progression from first code to larger systems is part of the record, including the work
+                that is still early or unfinished.
               </p>
             </div>
             <div className="journey">
@@ -191,7 +192,7 @@ export default function Home() {
               </div>
               <div className="journey-item">
                 <div className="year">CURRENT</div>
-                <div><h3>Systems thinking</h3><p>Current work increasingly explores deterministic tooling, persistence boundaries, AI-assisted development and the connection between engineering and software.</p></div>
+                <div><h3>Systems thinking</h3><p>Current work explores deterministic tooling, persistence boundaries, AI-assisted development and the connection between engineering and software.</p></div>
               </div>
             </div>
           </div>
@@ -208,7 +209,7 @@ export default function Home() {
             </div>
             <div className="actions contact-actions">
               <a className="button primary" href={`mailto:${profile.email}`}>Email me</a>
-              <a className="button" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a className="button" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open David Ifeanyi's LinkedIn profile in a new tab">LinkedIn ↗</a>
             </div>
           </div>
         </section>
