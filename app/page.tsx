@@ -155,11 +155,14 @@ export default function Home() {
                 It is intentionally not a proficiency scorecard.
               </p>
             </div>
-            <div className="skill-grid">
-              {skills.map(([name, list]) => (
+            <div className="skill-grid skill-grid-editorial">
+              {skills.map(([name, list], index) => (
                 <div className="skill" key={name}>
-                  <strong>{name}</strong>
-                  <span>{list.join(" · ")}</span>
+                  <div className="skill-index" aria-hidden="true">0{index + 1}</div>
+                  <div>
+                    <strong>{name}</strong>
+                    <span>{list.join(" · ")}</span>
+                  </div>
                 </div>
               ))}
             </div>
