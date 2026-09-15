@@ -85,7 +85,9 @@ export default function Home() {
                       <h3>{p.name}</h3>
                       <span className="project-type">Project</span>
                     </div>
-                    <span className="status" aria-label={`${p.name} project state: ${p.status}`}>{p.status}</span>
+                    <span className="status" aria-label={`${p.name} project context: ${p.status}`}>
+                      {p.status}
+                    </span>
                   </div>
                   <p>{p.description}</p>
                   <div className="tags" aria-label={`${p.name} technologies`}>
@@ -94,9 +96,9 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="actions project-actions">
-                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy} aria-label={`Explore the ${p.name} project case study`}>Explore project →</a>}
-                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open the live ${p.name} project in a new tab`}>Live project ↗</a>}
-                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open the ${p.name} repository in a new tab`}>Repository ↗</a>}
+                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy} aria-label={`Read the ${p.name} case study`}>Explore project →</a>}
+                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} live project in a new tab`}>Live project ↗</a>}
+                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} repository in a new tab`}>Repository ↗</a>}
                   </div>
                 </article>
               ))}
@@ -108,7 +110,7 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">03 · How I think</div>
+                <div className="eyebrow">03 · Systems thinking</div>
                 <h2>From project to system</h2>
               </div>
               <p className="section-copy">
