@@ -31,7 +31,7 @@ export default function Home() {
               <div className="actions hero-actions">
                 <a className="button primary" href="#work">View selected work</a>
                 <a className="button" href="#contact">Contact me</a>
-                <a className="hero-tertiary" href={profile.github} target="_blank" rel="noreferrer">
+                <a className="hero-tertiary" href={profile.github} target="_blank" rel="noreferrer" aria-label="Open David Ifeanyi's GitHub profile in a new tab">
                   GitHub ↗
                 </a>
               </div>
@@ -85,18 +85,20 @@ export default function Home() {
                       <h3>{p.name}</h3>
                       <span className="project-type">Project</span>
                     </div>
-                    <span className="status">{p.status}</span>
+                    <span className="status" aria-label={`${p.name} project context: ${p.status}`}>
+                      {p.status}
+                    </span>
                   </div>
                   <p>{p.description}</p>
-                  <div className="tags">
+                  <div className="tags" aria-label={`${p.name} technologies`}>
                     {p.stack.map((tag) => (
                       <span className="tag" key={tag}>{tag}</span>
                     ))}
                   </div>
                   <div className="actions project-actions">
-                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy}>Explore project →</a>}
-                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer">Live project ↗</a>}
-                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer">Repository ↗</a>}
+                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy} aria-label={`Read the ${p.name} case study`}>Explore project →</a>}
+                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} live project in a new tab`}>Live project ↗</a>}
+                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} repository in a new tab`}>Repository ↗</a>}
                   </div>
                 </article>
               ))}
@@ -208,7 +210,7 @@ export default function Home() {
             </div>
             <div className="actions contact-actions">
               <a className="button primary" href={`mailto:${profile.email}`}>Email me</a>
-              <a className="button" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a className="button" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open David Ifeanyi's LinkedIn profile in a new tab">LinkedIn ↗</a>
             </div>
           </div>
         </section>
