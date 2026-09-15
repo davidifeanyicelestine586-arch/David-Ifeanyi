@@ -1,6 +1,5 @@
 import { profile, projects, skills } from "../data/portfolio";
-import Globe from "../components/originkit/Globe";
-import RadialRevealButton from "../components/originkit/RadialRevealButton";
+import AccessibleGlobe from "../components/originkit/AccessibleGlobe";
 
 export default function Home() {
   return (
@@ -19,8 +18,8 @@ export default function Home() {
         </div>
       </nav>
 
-      <main id="top">
-        <header className="hero">
+      <main id="main-content" tabIndex={-1}>
+        <header className="hero" id="top">
           <div className="container hero-grid">
             <div className="hero-copy">
               <div className="eyebrow">Mechatronics Engineering × Software Development</div>
@@ -30,33 +29,20 @@ export default function Home() {
                 documenting and iterating on real projects.
               </p>
               <div className="actions hero-actions">
-                <RadialRevealButton
-                  label="View selected work"
-                  link="#work"
-                  newTab={false}
-                  padding="14px 20px"
-                  rounded={100}
-                  font={{ fontFamily: "Manrope, system-ui, sans-serif", fontWeight: 700, fontSize: 14 }}
-                  colors={{ fill: "#d8ff64", hoverFill: "#008E8E", textColor: "#10130b", hoverTextColor: "#ffffff" }}
-                  border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#d8ff64" }}
-                />
-                <RadialRevealButton
-                  label="Contact me"
-                  link="#contact"
-                  newTab={false}
-                  padding="14px 20px"
-                  rounded={100}
-                  font={{ fontFamily: "Manrope, system-ui, sans-serif", fontWeight: 700, fontSize: 14 }}
-                  colors={{ fill: "#101318", hoverFill: "#008E8E", textColor: "#f2f4f7", hoverTextColor: "#ffffff" }}
-                  border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#242a32" }}
-                />
+                <a className="button primary" href="#work">View selected work</a>
+                <a className="button" href="#contact">Contact me</a>
                 <a className="hero-tertiary" href={profile.github} target="_blank" rel="noreferrer">
                   GitHub ↗
                 </a>
               </div>
             </div>
             <div className="hero-visual" aria-hidden="true">
-              <Globe style={{ width: "100%", height: "100%" }} />
+              <AccessibleGlobe
+                style={{ width: "100%", height: "100%" }}
+                density={10}
+                spin={8}
+                hoverOn={true}
+              />
             </div>
           </div>
         </header>
@@ -122,22 +108,23 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">03 · Proof anchor</div>
-                <h2>Featured system</h2>
+                <div className="eyebrow">03 · How I think</div>
+                <h2>From project to system</h2>
               </div>
               <p className="section-copy">
-                The clearest example of my move from building individual interfaces toward thinking about
-                structured technical systems.
+                One project can show more than a finished interface. The case study below is the deeper
+                evidence trail for how I approach requirements, architecture and validation.
               </p>
             </div>
-            <div className="card featured feature-system">
+            <div className="card feature-system">
               <div className="feature-system-grid">
                 <div>
                   <div className="eyebrow">Tech Stack Architect</div>
-                  <h3 className="feature-title">A deterministic architecture workflow</h3>
+                  <h3 className="feature-title">Follow the evidence trail</h3>
                   <p>
-                    A structured workspace for defining a project, analyzing requirements, recommending
-                    compatible technologies, validating decisions and generating an implementation blueprint.
+                    Instead of repeating the project card, this section points to the documented case
+                    study where the system decisions, persistence boundaries, validation work and current
+                    scope can be inspected in detail.
                   </p>
                 </div>
                 <div>
@@ -146,16 +133,10 @@ export default function Home() {
                     <span>→</span><span>Validate</span><span>→</span><span>Blueprint</span>
                   </div>
                   <p className="feature-proof">
-                    Its documented persistence work separates API, persistence service, repository and
-                    Supabase concerns rather than assuming persistence is available everywhere.
+                    The case study separates documented evidence from future scope rather than treating
+                    an unfinished capability as production-ready.
                   </p>
                 </div>
-              </div>
-              <div className="tags">
-                <span className="tag">Deterministic reasoning</span>
-                <span className="tag">Dependency handling</span>
-                <span className="tag">Validation</span>
-                <span className="tag">Blueprint export</span>
               </div>
               <a className="link link-primary" href="/projects/tech-stack-architect">Read case study →</a>
             </div>
@@ -223,15 +204,7 @@ export default function Home() {
               </p>
             </div>
             <div className="actions contact-actions">
-              <RadialRevealButton
-                label="Email me"
-                link={`mailto:${profile.email}`}
-                padding="15px 22px"
-                rounded={100}
-                font={{ fontFamily: "Manrope, system-ui, sans-serif", fontWeight: 700, fontSize: 14 }}
-                colors={{ fill: "#d8ff64", hoverFill: "#008E8E", textColor: "#10130b", hoverTextColor: "#ffffff" }}
-                border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#d8ff64" }}
-              />
+              <a className="button primary" href={`mailto:${profile.email}`}>Email me</a>
               <a className="button" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             </div>
           </div>
