@@ -424,6 +424,6 @@ Globe.defaultProps = { ...DEFAULTS }
 
 const __originkitPresetProps = { dot: "#FFFFFF", net: "#26FF00", density: 20, spin: 20, spinDir: "right", hoverOn: true, sizePercent: 100 }
 
-export default function GlobePreset(props: Record<string, unknown>) {
-    return <Globe {...(__originkitPresetProps as Record<string, unknown>) } {...props} />
+export default function GlobePreset(props: Partial<Props>) {
+    return <Globe {...__originkitPresetProps} {...props} />
 }
