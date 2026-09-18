@@ -403,7 +403,12 @@ function OriginkitBaseGlobe(props: Props) {
         const container = containerRef.current
         if (!container) return
         let scene: GlobeScene
-        try { scene = new GlobeScene(container, cfgRef.current) } catch (error) {\n            if (process.env.NODE_ENV !== "production") console.error("[AccessibleGlobe] WebGL initialization failed", error)\n            return\n        }
+        try {
+            scene = new GlobeScene(container, cfgRef.current)
+        } catch (error) {
+            if (process.env.NODE_ENV !== "production") console.error("[AccessibleGlobe] WebGL initialization failed", error)
+            return
+        }
         sceneRef.current = scene
         scene.setSize(container.clientWidth, container.clientHeight)
         scene.start()
