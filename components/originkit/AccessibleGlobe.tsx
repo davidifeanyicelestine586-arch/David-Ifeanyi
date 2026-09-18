@@ -23,6 +23,7 @@ export default function AccessibleGlobe({
   const [isNarrow, setIsNarrow] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(true);
   const [pageVisible, setPageVisible] = React.useState(true);
+  const [globeFailed, setGlobeFailed] = React.useState(false);
 
   React.useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -58,7 +59,7 @@ export default function AccessibleGlobe({
     return () => observer.disconnect();
   }, [motionPreference]);
 
-  const renderGlobe = motionPreference === "full" && isVisible && pageVisible;
+  const renderGlobe = motionPreference === "full" && isVisible && pageVisible && !globeFailed;
 
   return (
     <div
@@ -74,7 +75,7 @@ export default function AccessibleGlobe({
         ...style,
       }}
     >
-      {motionPreference === "reduced" ? (
+      {motionPreference === "reduced" || globeFailed ? (
         <div
           style={{
             position: "absolute",
