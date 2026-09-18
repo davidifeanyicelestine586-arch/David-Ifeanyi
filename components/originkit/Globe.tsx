@@ -391,9 +391,9 @@ class GlobeScene {
     dispose() { this.disposed = true; cancelAnimationFrame(this.frameId); this.unbind(); this.pointGeo.dispose(); this.cageGeo.dispose(); this.panelGeo.dispose(); this.pointMat.dispose(); this.cageMat.dispose(); this.panelMat.dispose(); this.renderer.dispose(); const el = this.renderer.domElement; if (el.parentNode === this.container) this.container.removeChild(el) }
 }
 
-type Props = Config & { style?: React.CSSProperties }
+type Props = Config & { style?: React.CSSProperties; onError?: (error: unknown) => void }
 function OriginkitBaseGlobe(props: Props) {
-    const { dot = DEFAULTS.dot, net = DEFAULTS.net, density = DEFAULTS.density, spin = DEFAULTS.spin, spinDir = DEFAULTS.spinDir, hoverOn = DEFAULTS.hoverOn, sizePercent = DEFAULTS.sizePercent, dots = DEFAULTS.dots, cage = DEFAULTS.cage, shimmer = DEFAULTS.shimmer, waves = DEFAULTS.waves, hover = DEFAULTS.hover, style } = props
+    const { dot = DEFAULTS.dot, net = DEFAULTS.net, density = DEFAULTS.density, spin = DEFAULTS.spin, spinDir = DEFAULTS.spinDir, hoverOn = DEFAULTS.hoverOn, sizePercent = DEFAULTS.sizePercent, dots = DEFAULTS.dots, cage = DEFAULTS.cage, shimmer = DEFAULTS.shimmer, waves = DEFAULTS.waves, hover = DEFAULTS.hover, style, onError } = props
     const containerRef = useRef<HTMLDivElement | null>(null)
     const sceneRef = useRef<GlobeScene | null>(null)
     const initialConfig: Config = { dot, net, density, spin, spinDir, hoverOn, sizePercent, dots, cage, shimmer, waves, hover }
@@ -407,6 +407,7 @@ function OriginkitBaseGlobe(props: Props) {
             scene = new GlobeScene(container, cfgRef.current)
         } catch (error) {
             if (process.env.NODE_ENV !== "production") console.error("[AccessibleGlobe] WebGL initialization failed", error)
+            onError?.(error)
             return
         }
         sceneRef.current = scene

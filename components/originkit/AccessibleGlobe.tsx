@@ -10,6 +10,7 @@ type Props = {
   density?: number;
   spin?: number;
   hoverOn?: boolean;
+  onError?: (error: unknown) => void;
 };
 
 export default function AccessibleGlobe({
@@ -17,6 +18,7 @@ export default function AccessibleGlobe({
   density = 10,
   spin = 8,
   hoverOn = true,
+  onError,
 }: Props) {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const [motionPreference, setMotionPreference] = React.useState<"reduced" | "full" | null>(null);
@@ -91,6 +93,7 @@ export default function AccessibleGlobe({
           density={isNarrow ? Math.min(density, 7) : density}
           spin={isNarrow ? Math.min(spin, 5) : spin}
           hoverOn={isNarrow ? false : hoverOn}
+          onError={onError}
         />
       ) : null}
     </div>
