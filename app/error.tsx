@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") console.error(error);
-  }, [error]);
+  }, []);
 
   return (
     <main className="page-shell" aria-labelledby="error-title">
