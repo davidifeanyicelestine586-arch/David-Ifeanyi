@@ -331,7 +331,8 @@ class GlobeScene {
         const S = settingsFor(cfg)
         this.settings = S
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-        this.dpr = Math.min(window.devicePixelRatio || 1, 2)
+        const narrowViewport = window.matchMedia("(max-width: 800px)").matches
+        this.dpr = Math.min(window.devicePixelRatio || 1, narrowViewport ? 1.5 : 2)
         this.renderer.setPixelRatio(this.dpr)
         this.renderer.outputColorSpace = THREE.SRGBColorSpace
         this.renderer.setClearColor(0x000000, 0)
