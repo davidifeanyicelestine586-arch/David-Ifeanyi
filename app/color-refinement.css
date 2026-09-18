@@ -1,13 +1,3 @@
-:root {
-  /* Accent is a signal, not a second body color. */
-  --accent-hover: #b7dc45;
-}
-
-.button.primary:hover,
-.button-project-primary:hover {
-  color: var(--accent-contrast);
-}
-
 /* Keep technical workflow/meta information legible without making every detail compete with the primary action. */
 .workflow,
 .project-meta {
@@ -16,8 +6,4 @@
 
 .project-meta > span:last-child {
   color: var(--meta);
-}
-
-.project-card-featured {
-  border-color: var(--accent-border);
 }
