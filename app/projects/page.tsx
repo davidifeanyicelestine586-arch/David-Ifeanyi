@@ -48,12 +48,12 @@ export default function ProjectsPage() {
                     <div className="actions project-page-actions">
                       {primaryHref && (
                         project.caseStudy ? (
-                          <Link className="button button-project-primary" href={primaryHref}>
+                          <Link className="button primary" href={primaryHref}>
                             Explore project →
                           </Link>
                         ) : (
                           <a
-                            className="button button-project-primary"
+                            className="button primary"
                             href={primaryHref}
                             target="_blank"
                             rel="noreferrer"

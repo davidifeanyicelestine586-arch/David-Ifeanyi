@@ -96,9 +96,9 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="actions project-actions">
-                    {p.caseStudy && <a className="link link-primary" href={p.caseStudy} aria-label={`Read the ${p.name} case study`}>Explore project →</a>}
-                    {p.live && <a className="link link-secondary" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} live project in a new tab`}>Live project ↗</a>}
-                    {p.repository && <a className="link link-tertiary" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} repository in a new tab`}>Repository ↗</a>}
+                    {p.caseStudy && <a className="link" href={p.caseStudy} aria-label={`Read the ${p.name} case study`}>Explore project →</a>}
+                    {p.live && <a className="link" href={p.live} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} live project in a new tab`}>Live project ↗</a>}
+                    {p.repository && <a className="link link-subtle" href={p.repository} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} repository in a new tab`}>Repository ↗</a>}
                   </div>
                 </article>
               ))}
@@ -140,7 +140,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <a className="link link-primary" href="/projects/tech-stack-architect">Read case study →</a>
+              <a className="link" href="/projects/tech-stack-architect">Read case study →</a>
             </div>
           </div>
         </section>
