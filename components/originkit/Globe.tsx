@@ -429,7 +429,7 @@ function Globe(props: Props) { return <OriginkitBaseGlobe {...props} /> }
 Globe.displayName = "Globe"
 Globe.defaultProps = { ...DEFAULTS }
 
-const __originkitPresetProps = { dot: "#FFFFFF", net: "#26FF00", density: 20, spin: 20, spinDir: "right", hoverOn: true, sizePercent: 100 }
+const __originkitPresetProps = { dot: "#FFFFFF", net: "#26FF00", density: 20, spin: 20, spinDir: "right", hoverOn: true, sizePercent: 100 } as const
 
 export default function GlobePreset(props: Partial<Props>) {
     return <Globe {...__originkitPresetProps} {...props} />
