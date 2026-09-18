@@ -168,6 +168,8 @@ footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted)
   .footer-inner { flex-direction: column; gap: 6px; }
 }
 @media (max-width:520px) {
+  /* The mobile nav becomes two rows, so anchored sections need extra scroll clearance. */
+  html { scroll-padding-top: 112px; }
   .container { width: min(100% - 24px,1120px); }
   .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0 8px; }
   .nav-links { width: calc(100vw - 24px); }
