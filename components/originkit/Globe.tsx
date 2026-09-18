@@ -288,6 +288,7 @@ void main() {
 class GlobeScene {
     private container: HTMLElement
     private cfg: Config
+    private settings: ReturnType<typeof settingsFor>
     private renderer: THREE.WebGLRenderer
     private scene = new THREE.Scene()
     private camera = new THREE.PerspectiveCamera(30, 1, 0.1, 2000)
@@ -328,6 +329,7 @@ class GlobeScene {
     constructor(container: HTMLElement, cfg: Config) {
         this.container = container; this.cfg = cfg
         const S = settingsFor(cfg)
+        this.settings = S
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
         this.dpr = Math.min(window.devicePixelRatio || 1, 2)
         this.renderer.setPixelRatio(this.dpr)
@@ -364,7 +366,7 @@ class GlobeScene {
     setSize(width: number, height: number) { if (this.disposed || width <= 0 || height <= 0) return; this.width = width; this.height = height; this.renderer.setSize(width, height, false); this.pointMat.uniforms.uViewHeight.value = height * this.dpr; this.updateCamera() }
     updateConfig(cfg: Config) {
         if (this.disposed) return
-        const prev = this.cfg; this.cfg = cfg; const S = settingsFor(cfg); const p = this.pointMat.uniforms; const c = this.cageMat.uniforms; const f = this.panelMat.uniforms
+        const prev = this.cfg; this.cfg = cfg; const S = settingsFor(cfg); this.settings = S; const p = this.pointMat.uniforms; const c = this.cageMat.uniforms; const f = this.panelMat.uniforms
         p.uSpread.value = S.spread; p.uIntensity.value = S.intensity; p.uWave.value = S.wave; p.uHoverArc.value = S.hoverArc; p.uDotSize.value = S.dotSize; p.uWobble.value = S.wobble; p.uFlicker.value = S.flicker; p.uDot.value.set(cfg.dot || DEFAULTS.dot)
         c.uNet.value.set(cfg.net || DEFAULTS.net); c.uShimmerColor.value.set(cfg.shimmer?.color || DEFAULTS.shimmer.color); c.uShimmer.value = S.shimmer; c.uEdgeMix.value = S.edgeMix; c.uSweepMix.value = S.sweepMix; c.uSweepAxis.value = S.sweepAxis; c.uSweepWidth.value = S.sweepWidth; c.uNetGlow.value = S.netGlow; c.uHoverGlow.value = S.hoverGlow; f.uFill.value = S.hoverFill
         const cols = this.sourceColors(cfg); const live = p.uSourceColor.value as THREE.Color[]; for (let i = 0; i < SOURCES; i++) live[i].copy(cols[i])
@@ -381,7 +383,7 @@ class GlobeScene {
     private step() {
         if (this.disposed) return
         const now = performance.now(); let dt = (now - this.lastT) / 1000; this.lastT = now; if (!isFinite(dt) || dt < 0) dt = 0; if (dt > 0.05) dt = 0.05
-        const S = settingsFor(this.cfg); this.time += dt; const live = this.pointMat.uniforms.uSource.value as THREE.Vector3[]
+        const S = this.settings; this.time += dt; const live = this.pointMat.uniforms.uSource.value as THREE.Vector3[]
         for (let i = 0; i < SOURCES; i++) { this.sources[i].applyAxisAngle(this.axes[i], dt * S.wave * (0.35 + i * 0.12)).normalize(); live[i].copy(this.sources[i]) }
         if (!this.isDragging) { const decay = Math.exp(-dt * 3); this.dragY += this.velY; this.dragX += this.velX; this.velX *= decay; this.velY *= decay; this.spinAngle += S.spin * dt }
         this.pointMat.uniforms.uTime.value = this.time; this.group.rotation.y = this.spinAngle + this.dragY; this.group.rotation.x = clamp(this.dragX * 0.5, -1, 1, 0); this.grip += (this.targetGrip * S.hoverOn - this.grip) * (1 - Math.exp(-dt * 5)); this.pointMat.uniforms.uHover.value = this.grip; if (this.grip > 0.001) this.updateHoverDir(); this.renderer.render(this.scene, this.camera)
