@@ -140,7 +140,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <a className="link" href="/projects/tech-stack-architect">Read case study →</a>
+              <a className="link" href="/projects/tech-stack-architect" aria-label="Read the Tech Stack Architect case study">Read case study →</a>
             </div>
           </div>
         </section>

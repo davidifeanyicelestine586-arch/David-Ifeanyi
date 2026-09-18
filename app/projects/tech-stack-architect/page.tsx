@@ -80,12 +80,12 @@ export default function TechStackArchitectCaseStudy() {
             <h2>Inspect the evidence</h2>
             <div className="actions case-actions">
               {project.live && (
-                <a className="button" href={project.live} target="_blank" rel="noreferrer">
+                <a className="button" href={project.live} target="_blank" rel="noreferrer" aria-label={`Open ${project.name} live project in a new tab`}>
                   Open live project ↗
                 </a>
               )}
               {project.repository && (
-                <a className="button" href={project.repository} target="_blank" rel="noreferrer">
+                <a className="button" href={project.repository} target="_blank" rel="noreferrer" aria-label={`Inspect the ${project.name} GitHub repository in a new tab`}>
                   Inspect GitHub repository ↗
                 </a>
               )}

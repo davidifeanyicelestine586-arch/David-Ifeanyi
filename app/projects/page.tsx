@@ -48,7 +48,7 @@ export default function ProjectsPage() {
                     <div className="actions project-page-actions">
                       {primaryHref && (
                         project.caseStudy ? (
-                          <Link className="button primary" href={primaryHref}>
+                          <Link className="button primary" href={primaryHref} aria-label={`Explore ${project.name} project`}>
                             Explore project →
                           </Link>
                         ) : (
